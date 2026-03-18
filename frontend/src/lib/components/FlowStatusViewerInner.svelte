@@ -236,7 +236,9 @@
 	})
 
 	let jobResults: any[] = $state(
-		untrack(() => flowJobIds)?.flowJobs?.map((x, id) => `iter #${id + 1} not loaded by frontend yet`) ?? []
+		untrack(() => flowJobIds)?.flowJobs?.map(
+			(x, id) => `iter #${id + 1} not loaded by frontend yet`
+		) ?? []
 	)
 
 	function asWorkflowStatus(x: any): Record<string, WorkflowStatus> {
@@ -684,10 +686,7 @@
 									}
 								})
 								.catch((e) => {
-									console.error(
-										`Could not load inner module duration status for job ${mod.job}`,
-										e
-									)
+									console.error(`Could not load inner module duration status for job ${mod.job}`, e)
 								})
 						}
 					} else {
@@ -1994,7 +1993,9 @@
 												{#if job.args}
 													<JobArgs
 														id={isReplay ? undefined : job.id}
-														workspace={isReplay ? undefined : (job.workspace_id ?? $workspaceStore ?? 'no_w')}
+														workspace={isReplay
+															? undefined
+															: (job.workspace_id ?? $workspaceStore ?? 'no_w')}
 														args={job.args}
 													/>
 												{:else}
@@ -2064,20 +2065,25 @@
 																	<div class="text-xs text-emphasis font-semibold mb-1">Inputs</div>
 																	<JobArgs
 																		id={isReplay ? undefined : node.job_id}
-																		workspace={isReplay ? undefined : (job.workspace_id ?? $workspaceStore ?? 'no_w')}
+																		workspace={isReplay
+																			? undefined
+																			: (job.workspace_id ?? $workspaceStore ?? 'no_w')}
 																		args={node.args}
 																	/>
 																</div>
 															{/if}
 															{#if node.workflow_as_code_status}
 																<div>
-																	<div class="text-xs text-emphasis font-semibold mb-1">Workflow timeline</div>
+																	<div class="text-xs text-emphasis font-semibold mb-1"
+																		>Workflow timeline</div
+																	>
 																	<WorkflowTimeline
 																		flow_status={asWorkflowStatus(node.workflow_as_code_status)}
 																		flowDone={node.type === 'Success' || node.type === 'Failure'}
 																		stepResults={getStepResults(node.workflow_as_code_status)}
 																		result={node.result}
 																		success={node.type === 'Success'}
+																		jobId={node.job_id}
 																	/>
 																</div>
 															{/if}
