@@ -17486,6 +17486,7 @@ dependencies = [
  "gcp_auth",
  "git-version",
  "hex",
+ "hmac",
  "hudsucker",
  "hyper-http-proxy",
  "hyper-tls",
