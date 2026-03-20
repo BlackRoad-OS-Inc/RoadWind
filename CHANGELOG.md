@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.662.1](https://github.com/windmill-labs/windmill/compare/v1.662.0...v1.662.1) (2026-03-20)
+
+
+### Bug Fixes
+
+* stop_after_if with empty error_message prevents flow from stopping ([#8464](https://github.com/windmill-labs/windmill/issues/8464)) ([1503bf9](https://github.com/windmill-labs/windmill/commit/1503bf948e3340b8a6933d71885f8f2cb8dc1867))
+
 ## [1.662.0](https://github.com/windmill-labs/windmill/compare/v1.661.0...v1.662.0) (2026-03-20)
 
 
